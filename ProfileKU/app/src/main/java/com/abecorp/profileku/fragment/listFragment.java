@@ -6,6 +6,7 @@ Kelas   : IF 8
  */
 package com.abecorp.profileku.fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.abecorp.profileku.R;
 import com.abecorp.profileku.RecycleViewAdapter;
@@ -31,9 +35,10 @@ public class listFragment extends Fragment implements ViewList {
     View v;
     private RecyclerView recyclerView;
     private List<contactItem> lstContact;
-    private PresentList presenter;
     private RecycleViewAdapter recycleAdapter;
     private ViewList viewList;
+    private Button ButtonAdd, ButtonSave, ButtonCancel;
+    private Dialog myDialog;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -45,8 +50,29 @@ public class listFragment extends Fragment implements ViewList {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recycleAdapter);
 
-        //presenter = new PresentImplList(this);
-        //presenter.load();
+        //Dialog
+        myDialog = new Dialog(getContext());
+        myDialog.setContentView(R.layout.dialog_input);
+
+        //Button
+        final Button ButtonSave, ButtonCancel;
+
+        ButtonAdd = v.findViewById(R.id.button_add);
+        ButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText dialog_nim = myDialog.findViewById(R.id.edittext_nim);
+                EditText dialog_nama = myDialog.findViewById(R.id.edittext_nama);
+                EditText dialog_kelas = myDialog.findViewById(R.id.edittext_kelas);
+                EditText dialog_nohp = myDialog.findViewById(R.id.edittext_telepon);
+                EditText dialog_email = myDialog.findViewById(R.id.edittext_email);
+                EditText dialog_sosmed = myDialog.findViewById(R.id.edittext_sosmed);
+
+
+                myDialog.show();
+                Toast.makeText(getContext(),"AClick",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return v;
     }

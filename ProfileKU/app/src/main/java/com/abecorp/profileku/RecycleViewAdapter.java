@@ -123,6 +123,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         myViewHolder.tv_hp.setText(contItem.getFhp());
         myViewHolder.tv_email.setText(contItem.getFemail());
         myViewHolder.tv_sosmed.setText(contItem.getFsosmed());
+
         /*
         myViewHolder.tv_nim.setText(mData.get(i).getFnim());
         myViewHolder.tv_nama.setText(mData.get(i).getFnama());
